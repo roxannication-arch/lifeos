@@ -3,7 +3,6 @@ import { ChevronDown, ListFilter } from "lucide-react";
 import { BackHeader } from "../components/BackHeader.jsx";
 import { STATEMENT_FILES } from "../constants.js";
 
-const MARCH_STATEMENT_KEY = "2026-03";
 const ITEM_HEIGHT = 42;
 const monthWheel = [
   { key: "2026-01", label: "January 2026" },
@@ -60,7 +59,7 @@ function MonthWheel({ label, selectedMonthKey, onSelectMonth }) {
         Math.max(0, Math.round(scrollRef.current.scrollTop / ITEM_HEIGHT) + 1),
       );
 
-      onSelectMonth(monthWheel[centeredIndex].key, true);
+      onSelectMonth(monthWheel[centeredIndex].key);
     }, 110);
   };
 
@@ -72,7 +71,7 @@ function MonthWheel({ label, selectedMonthKey, onSelectMonth }) {
           <button
             key={`${label}-${month.key}`}
             type="button"
-            onClick={() => onSelectMonth(month.key, true)}
+            onClick={() => onSelectMonth(month.key)}
             className={`block h-[42px] w-full snap-center rounded-[18px] px-2 text-center text-[15px] font-semibold transition ${
               month.key === selectedMonthKey ? "bg-[#2C2C2E] text-white" : "text-[#8E8E93]/30"
             }`}
@@ -89,7 +88,6 @@ export function StatementScreen({ goTo, openViewer }) {
   const [selectedMonthKey, setSelectedMonthKey] = useState("2026-08");
   const [isGenerating, setIsGenerating] = useState(false);
   const fileInputRef = useRef(null);
-  const autoOpenedMonthRef = useRef("");
 
   const openStatementForMonth = (monthKey, allowFileFallback) => {
     if (isGenerating) {
@@ -117,13 +115,8 @@ export function StatementScreen({ goTo, openViewer }) {
     openStatementForMonth(selectedMonthKey, true);
   };
 
-  const handleSelectMonth = (monthKey, shouldAutoOpen = false) => {
+  const handleSelectMonth = (monthKey) => {
     setSelectedMonthKey(monthKey);
-
-    if (shouldAutoOpen && monthKey === MARCH_STATEMENT_KEY && autoOpenedMonthRef.current !== monthKey) {
-      autoOpenedMonthRef.current = monthKey;
-      openStatementForMonth(monthKey, false);
-    }
   };
 
   const handleFileChange = (event) => {
