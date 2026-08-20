@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Revolut coursework app icon</title>
+  <defs>
+    <filter id="softShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="#ffffff" filter="url(#softShadow)"/>
+  <g fill="#000000" transform="translate(35 36)">
+    <path d="M62 58h232c101 0 171 67 171 158 0 90-69 156-168 156h-64v-72h62c55 0 92-34 92-84s-37-84-92-84H62z"/>
+    <path d="M62 164h76v260H62z"/>
+    <path d="M221 329h88l124 95H326z"/>
+  </g>
+</svg>
