@@ -17,6 +17,9 @@ import georgiaImage from "../assets/georgia-card.svg";
 import inviteCardImage from "../assets/invite-card.svg";
 import mapPreviewImage from "../assets/map-preview.svg";
 
+const GEORGIA_PHOTO_URL =
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/20110421_Tbilisi_Georgia_Panoramic.jpg/960px-20110421_Tbilisi_Georgia_Panoramic.jpg";
+
 const cardItems = [
   { name: "Yellow", number: "··4045", className: "from-[#F7D44A] to-[#F4A736] text-black" },
   { name: "Space Gray", number: "··2836", className: "from-[#424245] to-[#1C1C1E] text-white" },
@@ -163,6 +166,11 @@ export function HomeScreen({ goTo }) {
         <GlassCard className="mt-5 overflow-hidden">
           <div className="relative h-[260px] overflow-hidden p-5">
             <img src={georgiaImage} alt="" className="absolute inset-0 h-full w-full object-cover" aria-hidden="true" />
+            <img
+              src={GEORGIA_PHOTO_URL}
+              alt="Panoramic view of Tbilisi, Georgia"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/48" />
             <button type="button" className="absolute right-4 top-3 z-[1] text-xl text-white" aria-label="Close Georgia card">
               ×
