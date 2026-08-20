@@ -1,6 +1,6 @@
-export function ViewerScreen({ goTo, src }) {
-  const viewerSrc = src ? `${src}#toolbar=0&navpanes=0&scrollbar=1&view=FitH&zoom=page-width` : "";
+import { PdfDocumentViewer } from "../components/PdfDocumentViewer.jsx";
 
+export function ViewerScreen({ goTo, src }) {
   return (
     <div className="h-full bg-black">
       <header className="flex h-[60px] items-center justify-between px-4">
@@ -22,7 +22,7 @@ export function ViewerScreen({ goTo, src }) {
       </header>
       <div className="h-[calc(100%-60px)] bg-black">
         {src ? (
-          <iframe title="Account statement PDF" src={viewerSrc} className="h-full w-full border-0 bg-black" />
+          <PdfDocumentViewer src={src} />
         ) : (
           <div className="flex h-full items-center justify-center px-6 text-center text-sm font-semibold text-white">
             No statement file selected.
