@@ -1,8 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import * as pdfjs from "pdfjs-dist";
-import pdfWorkerUrl from "pdfjs-dist/build/pdf.worker.mjs?url";
-
-pdfjs.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
 
 function PdfPage({ pageNumber, pdf, width }) {
   const canvasRef = useRef(null);
@@ -76,31 +73,46 @@ export function PdfDocumentViewer({ src }) {
     }
 
     let cancelled = false;
-    const loadingTask = pdfjs.getDocument(src);
+    let loadingTask = null;
+    let loadedDocument = null;
 
     setError("");
     setPdf(null);
     setPageCount(0);
 
-    loadingTask.promise
-      .then((loadedPdf) => {
+    async function loadPdf() {
+      const response = await fetch(src, { cache: "no-store" });
+
+      if (!response.ok) {
+        throw new Error("PDF request failed");
+      }
+
+      const data = new Uint8Array(await response.arrayBuffer());
+      loadingTask = pdfjs.getDocument({ data, disableWorker: true });
+      const loadedPdf = await loadingTask.promise;
+      loadedDocument = loadedPdf;
+
+      if (cancelled) {
+        loadedPdf.destroy();
+        return;
+      }
+
+      setPdf(loadedPdf);
+      setPageCount(loadedPdf.numPages);
+    }
+
+    loadPdf().catch(() => {
         if (cancelled) {
-          loadedPdf.destroy();
           return;
         }
 
-        setPdf(loadedPdf);
-        setPageCount(loadedPdf.numPages);
-      })
-      .catch(() => {
-        if (!cancelled) {
-          setError("Could not open this PDF.");
-        }
+        setError("Could not open this PDF.");
       });
 
     return () => {
       cancelled = true;
-      loadingTask.destroy();
+      loadingTask?.destroy();
+      loadedDocument?.destroy();
     };
   }, [src]);
 
