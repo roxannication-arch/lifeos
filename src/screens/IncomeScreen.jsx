@@ -31,9 +31,9 @@ function ChartSwitcher() {
 
 export function IncomeScreen({ goTo }) {
   return (
-    <div className="h-[800px]">
+    <div className="h-full">
       <BackHeader onBack={() => goTo("analytics")} right={<ChartSwitcher />} />
-      <div className="safe-scroll h-[744px] overflow-y-auto px-4 pb-8">
+      <div className="safe-scroll h-[calc(100%-56px)] overflow-y-auto px-4 pb-8">
         <section className="mt-7">
           <p className="text-[15px] font-bold text-[#8E8E93]">Income · Personal</p>
           <h1 className="mt-2 text-[40px] font-extrabold leading-none tracking-[-0.06em]">$49,521</h1>

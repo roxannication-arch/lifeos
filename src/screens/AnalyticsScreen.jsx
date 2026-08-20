@@ -28,9 +28,9 @@ function MetricCard({ children, onClick, title, value, delta, deltaClass = "text
 
 export function AnalyticsScreen({ goTo }) {
   return (
-    <div className="h-[800px]">
+    <div className="h-full">
       <BackHeader onBack={() => goTo("home")} />
-      <div className="safe-scroll h-[744px] overflow-y-auto px-4 pb-7">
+      <div className="safe-scroll h-[calc(100%-56px)] overflow-y-auto px-4 pb-7">
         <h1 className="mt-6 text-[38px] font-extrabold leading-none tracking-[-0.05em]">Analytics</h1>
         <button type="button" className="mt-3 rounded-full bg-[#1C1C1E] px-4 py-2 text-sm font-bold text-white">
           Personal ▾

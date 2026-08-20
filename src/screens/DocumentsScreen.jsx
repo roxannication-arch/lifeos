@@ -23,9 +23,9 @@ function Row({ label, onClick, icon: Icon = FileText }) {
 
 export function DocumentsScreen({ goTo }) {
   return (
-    <div className="h-[800px]">
+    <div className="h-full">
       <BackHeader onBack={() => goTo("profile")} />
-      <div className="safe-scroll h-[744px] overflow-y-auto px-4 pb-8">
+      <div className="safe-scroll h-[calc(100%-56px)] overflow-y-auto px-4 pb-8">
         <h1 className="mt-6 max-w-[330px] text-[36px] font-extrabold leading-[1.1] tracking-[-0.06em]">Documents and statements</h1>
 
         <article className="mt-6 rounded-[24px] bg-[#1C1C1E] px-5 py-[17px]">

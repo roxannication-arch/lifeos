@@ -1,6 +1,6 @@
 export function ViewerScreen({ goTo, src }) {
   return (
-    <div className="h-[800px] bg-black">
+    <div className="h-full bg-black">
       <header className="flex h-[60px] items-center justify-between px-4">
         <button
           type="button"
@@ -18,7 +18,7 @@ export function ViewerScreen({ goTo, src }) {
           ⇧
         </button>
       </header>
-      <div className="h-[740px] bg-white">
+      <div className="h-[calc(100%-60px)] bg-white">
         {src ? (
           <iframe title="Account statement PDF" src={src} className="h-full w-full border-0 bg-white" />
         ) : (

@@ -55,7 +55,7 @@ function MenuRow({ item, goTo }) {
 export function ProfileScreen({ goTo }) {
   return (
     <div
-      className="safe-scroll relative h-[800px] overflow-y-auto px-4 pb-8"
+      className="safe-scroll relative h-full overflow-y-auto px-4 pb-8"
       style={{
         backgroundImage:
           "radial-gradient(circle at 20% 17%, rgba(34,224,160,0.18), transparent 14%), radial-gradient(circle at 72% 60%, rgba(10,132,255,0.15), transparent 21%), radial-gradient(circle at 72% 42%, rgba(170,120,75,0.18), transparent 18%), linear-gradient(#101313, #111111)",

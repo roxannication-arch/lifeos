@@ -117,7 +117,7 @@ function QuickAction({ icon: Icon, label }) {
 export function HomeScreen({ goTo }) {
   return (
     <div
-      className="relative h-[800px] bg-[#101417]"
+      className="relative h-full bg-[#101417]"
       style={{
         backgroundImage:
           "radial-gradient(circle at 18% 8%, rgba(210,230,230,0.36), transparent 28%), radial-gradient(circle at 90% 26%, rgba(103,122,112,0.24), transparent 22%), linear-gradient(150deg, #11171A 0%, #273038 42%, #101316 100%)",

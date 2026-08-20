@@ -27,9 +27,9 @@ function Row({ label, onClick }) {
 
 export function PersonalScreen({ goTo }) {
   return (
-    <div className="h-[800px]">
+    <div className="h-full">
       <BackHeader onBack={() => goTo("documents")} />
-      <div className="safe-scroll h-[744px] overflow-y-auto px-4 pb-8">
+      <div className="safe-scroll h-[calc(100%-56px)] overflow-y-auto px-4 pb-8">
         <h1 className="mt-6 text-[38px] font-extrabold leading-none tracking-[-0.06em]">Personal</h1>
 
         <Section title="Statements">

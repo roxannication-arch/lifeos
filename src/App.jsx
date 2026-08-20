@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { PhoneFrame } from "./components/PhoneFrame.jsx";
-import { StatusBar } from "./components/StatusBar.jsx";
 import { AnalyticsScreen } from "./screens/AnalyticsScreen.jsx";
 import { DocumentsScreen } from "./screens/DocumentsScreen.jsx";
 import { HomeScreen } from "./screens/HomeScreen.jsx";
@@ -51,7 +50,6 @@ export default function App() {
   return (
     <PhoneFrame>
       <div className="flex h-full flex-col bg-black text-white">
-        <StatusBar />
         {screens[screen] ?? screens.home}
       </div>
     </PhoneFrame>

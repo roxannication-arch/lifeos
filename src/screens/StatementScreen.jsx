@@ -139,9 +139,9 @@ export function StatementScreen({ goTo, openViewer }) {
   };
 
   return (
-    <div className="relative h-[800px]">
+    <div className="relative h-full">
       <BackHeader onBack={() => goTo("personal")} />
-      <div className="safe-scroll h-[744px] overflow-y-auto px-4 pb-28">
+      <div className="safe-scroll h-[calc(100%-56px)] overflow-y-auto px-4 pb-28">
         <h1 className="mt-6 text-[38px] font-extrabold leading-none tracking-[-0.06em]">Statement</h1>
 
         <button type="button" className="mt-6 flex items-center gap-2 rounded-full bg-[#2C2C2E] px-4 py-3 text-sm font-extrabold">
