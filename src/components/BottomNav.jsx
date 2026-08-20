@@ -2,13 +2,13 @@ import { ArrowLeftRight, BarChart3, Grid2X2 } from "lucide-react";
 
 function RevolutMark({ className = "" }) {
   return (
-    <svg viewBox="0 0 1024 1024" className={className} aria-hidden="true">
+    <svg viewBox="0 0 512 512" className={className} aria-hidden="true">
       <path
-        d="M246 238h380c151 0 255 98 255 239 0 137-99 234-246 234h-98V588h96c72 0 122-45 122-111 0-67-50-112-122-112H246z"
+        d="M97 94h232c101 0 171 67 171 158 0 90-69 156-168 156h-64v-72h62c55 0 92-34 92-84s-37-84-92-84H97z"
         fill="currentColor"
       />
-      <path d="M246 428h128v370H246z" fill="currentColor" />
-      <path d="M502 604h145l181 194H674z" fill="currentColor" />
+      <path d="M97 200h76v260H97z" fill="currentColor" />
+      <path d="M256 365h88l124 95H361z" fill="currentColor" />
     </svg>
   );
 }
