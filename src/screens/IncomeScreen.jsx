@@ -1,5 +1,6 @@
 import { BackHeader } from "../components/BackHeader.jsx";
 import { MonthBars } from "../components/Charts.jsx";
+import { BarChart3, CircleDollarSign, Coins, LineChart, Repeat2, RefreshCw } from "lucide-react";
 
 const categories = [
   { name: "Deposits", amount: "+$42,472", meta: "33 transactions", percent: "86%" },
@@ -8,18 +9,20 @@ const categories = [
 ];
 
 function ChartSwitcher() {
+  const views = [LineChart, BarChart3, RefreshCw];
+
   return (
     <div className="flex rounded-full bg-[#1C1C1E] p-1">
-      {["⌁", "▥", "◌"].map((item, index) => (
+      {views.map((Icon, index) => (
         <button
-          key={item}
+          key={index}
           type="button"
           className={`flex h-9 w-9 items-center justify-center rounded-full text-lg font-bold ${
             index === 1 ? "bg-[#2C2C2E] text-white" : "text-[#8E8E93]"
           }`}
           aria-label={`Chart view ${index + 1}`}
         >
-          {item}
+          <Icon size={18} strokeWidth={2.5} />
         </button>
       ))}
     </div>
@@ -73,9 +76,14 @@ export function IncomeScreen({ goTo }) {
                 key={category.name}
                 className={`flex items-center justify-between p-4 ${index > 0 ? "border-t border-[#2C2C2E]" : ""}`}
               >
-                <div>
-                  <p className="text-[15px] font-bold">{category.name}</p>
-                  <p className="mt-1 text-xs font-semibold text-[#8E8E93]">{category.meta}</p>
+                <div className="flex items-center gap-3">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#2C2C2E]">
+                    {index === 0 ? <CircleDollarSign size={22} /> : index === 1 ? <Coins size={22} /> : <Repeat2 size={22} />}
+                  </span>
+                  <div>
+                    <p className="text-[15px] font-bold">{category.name}</p>
+                    <p className="mt-1 text-xs font-semibold text-[#8E8E93]">{category.meta}</p>
+                  </div>
                 </div>
                 <div className="text-right">
                   <p className="text-[15px] font-extrabold text-[#22E0A0]">{category.amount}</p>

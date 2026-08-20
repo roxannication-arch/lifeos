@@ -1,17 +1,31 @@
+import {
+  BadgeHelp,
+  Building2,
+  FileText,
+  Megaphone,
+  Settings,
+  ShieldCheck,
+  Sparkles,
+  UserRound,
+  X,
+  Mail,
+} from "lucide-react";
 import premiumCardImage from "../assets/premium-card.svg";
 
 const menuGroups = [
-  { label: "Invite friends", sub: "Earn $150 or more", icon: "✉" },
-  { label: "Inbox", badge: "20", icon: "▰" },
-  { label: "Personal info", icon: "♟" },
-  { label: "Account details", icon: "⌂" },
-  { label: "Security", icon: "▣" },
-  { label: "Documents and statements", icon: "◰", screen: "documents" },
-  { label: "Help", badge: "1", icon: "?" },
-  { label: "Settings", icon: "⚙" },
+  { label: "Invite friends", sub: "Earn $150 or more", icon: Mail },
+  { label: "Inbox", badge: "20", icon: Megaphone },
+  { label: "Personal info", icon: UserRound },
+  { label: "Account details", icon: Building2 },
+  { label: "Security", icon: ShieldCheck },
+  { label: "Documents and statements", icon: FileText, screen: "documents" },
+  { label: "Help", badge: "1", icon: BadgeHelp },
+  { label: "Settings", icon: Settings },
 ];
 
 function MenuRow({ item, goTo }) {
+  const Icon = item.icon;
+
   return (
     <button
       type="button"
@@ -19,7 +33,9 @@ function MenuRow({ item, goTo }) {
       className="flex w-full items-center justify-between px-4 py-[15px] text-left transition active:bg-white/5"
     >
       <div className="flex items-center gap-3">
-        <span className="flex h-10 w-10 items-center justify-center text-[22px] text-white">{item.icon}</span>
+        <span className="flex h-10 w-10 items-center justify-center text-white">
+          <Icon size={22} strokeWidth={2.5} />
+        </span>
         <div>
           <p className="text-[17px] font-bold text-white">{item.label}</p>
           {item.sub ? <p className="mt-0.5 text-[14px] font-medium text-white/55">{item.sub}</p> : null}
@@ -52,10 +68,11 @@ export function ProfileScreen({ goTo }) {
           className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#1C1C1E]/70 text-2xl font-semibold"
           aria-label="Close profile"
         >
-          ✕
+          <X size={23} strokeWidth={2.6} />
         </button>
-        <button type="button" className="rounded-full border border-white/10 bg-white/18 px-4 py-3 text-[15px] font-extrabold backdrop-blur-xl">
-          ◈ Upgrade
+        <button type="button" className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/18 px-4 py-3 text-[15px] font-extrabold backdrop-blur-xl">
+          <Sparkles size={16} strokeWidth={2.6} />
+          Upgrade
         </button>
       </header>
 

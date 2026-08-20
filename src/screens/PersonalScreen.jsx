@@ -1,4 +1,5 @@
 import { BackHeader } from "../components/BackHeader.jsx";
+import { FileText } from "lucide-react";
 
 function Section({ title, children }) {
   return (
@@ -17,7 +18,7 @@ function Row({ label, onClick }) {
       className="flex w-full items-center justify-between px-5 py-[17px] text-left text-[17px] font-bold transition active:bg-[#2C2C2E]"
     >
       <span className="flex items-center gap-4">
-        <span className="text-[21px]">◰</span>
+        <FileText size={22} strokeWidth={2.5} />
         {label}
       </span>
     </button>

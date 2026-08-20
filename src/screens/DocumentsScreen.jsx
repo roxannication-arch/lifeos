@@ -1,8 +1,9 @@
 import { BackHeader } from "../components/BackHeader.jsx";
+import { FileText, Info } from "lucide-react";
 
 const legalRows = ["Privacy policy", "California Collection Notice", "Terms & conditions"];
 
-function Row({ label, onClick, icon = "◰" }) {
+function Row({ label, onClick, icon: Icon = FileText }) {
   return (
     <button
       type="button"
@@ -10,7 +11,9 @@ function Row({ label, onClick, icon = "◰" }) {
       className="flex w-full items-center justify-between px-5 py-[17px] text-left text-[17px] font-bold transition active:bg-[#2C2C2E]"
     >
       <span className="flex items-center gap-4">
-        <span className="text-[21px] text-white">{icon}</span>
+        <span className="text-white">
+          <Icon size={22} strokeWidth={2.5} />
+        </span>
         {label}
       </span>
       <span className="text-2xl text-[#8E8E93]">›</span>
@@ -28,7 +31,9 @@ export function DocumentsScreen({ goTo }) {
         <article className="mt-6 rounded-[24px] bg-[#1C1C1E] px-5 py-[17px]">
           <div className="flex items-center justify-between">
             <div className="flex items-start gap-4">
-              <span className="pt-1 text-[21px]">◰</span>
+              <span className="pt-1">
+                <FileText size={22} strokeWidth={2.5} />
+              </span>
               <div>
                 <h2 className="text-[17px] font-extrabold">Custom statement</h2>
                 <p className="mt-0.5 max-w-[230px] text-[14px] font-medium leading-5 text-[#8E8E93]">
@@ -49,7 +54,7 @@ export function DocumentsScreen({ goTo }) {
         <section className="mt-5 overflow-hidden rounded-[24px] bg-[#1C1C1E]">
           {legalRows.map((label, index) => (
             <div key={label} className={index > 0 ? "border-t border-[#2C2C2E]" : ""}>
-              <Row label={label} icon={label === "Terms & conditions" ? "●" : "◰"} />
+              <Row label={label} icon={label === "Terms & conditions" ? Info : FileText} />
             </div>
           ))}
         </section>

@@ -1,3 +1,16 @@
+import {
+  Banknote,
+  BarChart3,
+  CreditCard,
+  Landmark,
+  Link,
+  MapPin,
+  MoreHorizontal,
+  Plus,
+  Search,
+  Shuffle,
+  Users,
+} from "lucide-react";
 import { AreaChart } from "../components/Charts.jsx";
 import { BottomNav } from "../components/BottomNav.jsx";
 import georgiaImage from "../assets/georgia-card.svg";
@@ -65,7 +78,7 @@ function TopControls({ goTo }) {
         type="button"
         className="flex h-12 flex-1 items-center justify-start gap-3 rounded-full border border-white/15 bg-[#1C1C1E]/60 px-4 text-[15px] font-semibold text-white/85 shadow-inner shadow-white/5"
       >
-        <span className="text-xl">⌕</span>
+        <Search size={21} strokeWidth={2.4} />
         Search
       </button>
       <button
@@ -74,24 +87,24 @@ function TopControls({ goTo }) {
         className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#1C1C1E]/65 text-xl"
         aria-label="Open analytics"
       >
-        ▥
+        <BarChart3 size={22} strokeWidth={2.6} />
       </button>
       <button
         type="button"
         className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#1C1C1E]/65 text-xl"
         aria-label="Cards"
       >
-        ▰
+        <CreditCard size={22} strokeWidth={2.5} />
       </button>
     </header>
   );
 }
 
-function QuickAction({ icon, label }) {
+function QuickAction({ icon: Icon, label }) {
   return (
     <button type="button" className="flex flex-col items-center gap-2 text-[13px] font-bold text-white">
       <span className="flex h-[54px] w-[54px] items-center justify-center rounded-full bg-white/14 text-2xl shadow-lg shadow-black/20 backdrop-blur-xl">
-        {icon}
+        <Icon size={24} strokeWidth={2.7} />
       </span>
       {label}
     </button>
@@ -123,10 +136,10 @@ export function HomeScreen({ goTo }) {
           <div>
             <div className="mb-8 text-lg tracking-[0.35em] text-white/55">···</div>
             <div className="grid grid-cols-4 gap-4">
-              <QuickAction icon="+" label="Add money" />
-              <QuickAction icon="⇄" label="Move" />
-              <QuickAction icon="⌂" label="Details" />
-              <QuickAction icon="···" label="More" />
+              <QuickAction icon={Plus} label="Add money" />
+              <QuickAction icon={Shuffle} label="Move" />
+              <QuickAction icon={Landmark} label="Details" />
+              <QuickAction icon={MoreHorizontal} label="More" />
             </div>
           </div>
         </section>
@@ -159,9 +172,9 @@ export function HomeScreen({ goTo }) {
               <h2 className="text-[28px] font-extrabold leading-none">Georgia</h2>
             </div>
             <div className="absolute bottom-0 left-0 right-0 grid grid-cols-3 gap-7 bg-gradient-to-t from-black/45 to-transparent px-12 pb-5 pt-16">
-              <QuickAction icon="♣" label="Group bills" />
-              <QuickAction icon="⌖" label="ATM" />
-              <QuickAction icon="⋮" label="More" />
+              <QuickAction icon={Users} label="Group bills" />
+              <QuickAction icon={MapPin} label="ATM" />
+              <QuickAction icon={MoreHorizontal} label="More" />
             </div>
           </div>
         </GlassCard>
@@ -193,7 +206,9 @@ export function HomeScreen({ goTo }) {
           <div className="mt-6 space-y-5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#7C7CFF] text-xl">●</span>
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#7C7CFF]">
+                  <Banknote size={23} strokeWidth={2.5} />
+                </span>
                 <span className="text-lg font-extrabold">Cash</span>
               </div>
               <div className="text-right text-sm font-bold">
@@ -203,7 +218,9 @@ export function HomeScreen({ goTo }) {
             </div>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1AB7FF] text-xl">▥</span>
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1AB7FF]">
+                  <BarChart3 size={23} strokeWidth={2.5} />
+                </span>
                 <div>
                   <p className="text-lg font-extrabold">Invest</p>
                   <p className="text-sm font-medium text-white/55">Invest for as little as $1</p>
@@ -213,7 +230,9 @@ export function HomeScreen({ goTo }) {
             </div>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#10D8DE] text-xl">∞</span>
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#10D8DE]">
+                  <Link size={23} strokeWidth={2.5} />
+                </span>
                 <div>
                   <p className="text-lg font-extrabold">Linked</p>
                   <p className="text-sm font-medium text-white/55">Link external accounts</p>

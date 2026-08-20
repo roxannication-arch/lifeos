@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { ChevronDown, ListFilter } from "lucide-react";
 import { BackHeader } from "../components/BackHeader.jsx";
 import { STATEMENT_FILES } from "../constants.js";
 
@@ -78,8 +79,9 @@ export function StatementScreen({ goTo, openViewer }) {
       <div className="safe-scroll h-[744px] overflow-y-auto px-4 pb-28">
         <h1 className="mt-6 text-[38px] font-extrabold leading-none tracking-[-0.06em]">Statement</h1>
 
-        <button type="button" className="mt-6 rounded-full bg-[#2C2C2E] px-4 py-3 text-sm font-extrabold">
-          ⇥ USD account
+        <button type="button" className="mt-6 flex items-center gap-2 rounded-full bg-[#2C2C2E] px-4 py-3 text-sm font-extrabold">
+          <ListFilter size={16} strokeWidth={2.6} />
+          USD account
         </button>
 
         <div className="mt-5">
@@ -92,7 +94,7 @@ export function StatementScreen({ goTo, openViewer }) {
               <span className="block text-sm font-bold text-[#8E8E93]">Period</span>
               <span className="mt-1 block text-[17px] font-bold">Month</span>
             </span>
-            <span className="text-xl text-[#8E8E93]">⌄</span>
+            <ChevronDown size={20} strokeWidth={2.6} className="text-[#8E8E93]" />
           </button>
         </section>
 
