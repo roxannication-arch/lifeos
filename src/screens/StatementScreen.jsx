@@ -1,10 +1,24 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronDown, ListFilter } from "lucide-react";
 import { BackHeader } from "../components/BackHeader.jsx";
 import { STATEMENT_FILES } from "../constants.js";
 
-const selectedMonthKey = "2026-03";
-const monthWheel = ["February 2026", "March 2026", "April 2026"];
+const MARCH_STATEMENT_KEY = "2026-03";
+const ITEM_HEIGHT = 42;
+const monthWheel = [
+  { key: "2026-01", label: "January 2026" },
+  { key: "2026-02", label: "February 2026" },
+  { key: "2026-03", label: "March 2026" },
+  { key: "2026-04", label: "April 2026" },
+  { key: "2026-05", label: "May 2026" },
+  { key: "2026-06", label: "June 2026" },
+  { key: "2026-07", label: "July 2026" },
+  { key: "2026-08", label: "August 2026" },
+  { key: "2026-09", label: "September 2026" },
+  { key: "2026-10", label: "October 2026" },
+  { key: "2026-11", label: "November 2026" },
+  { key: "2026-12", label: "December 2026" },
+];
 
 function Toggle() {
   return (
@@ -22,20 +36,49 @@ function Toggle() {
   );
 }
 
-function MonthWheel({ label }) {
+function MonthWheel({ label, selectedMonthKey, onSelectMonth }) {
+  const scrollRef = useRef(null);
+  const scrollTimerRef = useRef(null);
+
+  useEffect(() => {
+    const index = monthWheel.findIndex((month) => month.key === selectedMonthKey);
+
+    if (scrollRef.current && index >= 0) {
+      scrollRef.current.scrollTop = Math.max(0, (index - 1) * ITEM_HEIGHT);
+    }
+  }, [selectedMonthKey]);
+
+  const handleScroll = () => {
+    window.clearTimeout(scrollTimerRef.current);
+    scrollTimerRef.current = window.setTimeout(() => {
+      if (!scrollRef.current) {
+        return;
+      }
+
+      const centeredIndex = Math.min(
+        monthWheel.length - 1,
+        Math.max(0, Math.round(scrollRef.current.scrollTop / ITEM_HEIGHT) + 1),
+      );
+
+      onSelectMonth(monthWheel[centeredIndex].key, true);
+    }, 110);
+  };
+
   return (
     <div className="flex-1">
       <p className="mb-3 text-center text-sm font-bold text-[#8E8E93]">{label}</p>
-      <div>
+      <div ref={scrollRef} onScroll={handleScroll} className="safe-scroll h-[126px] snap-y snap-mandatory overflow-y-auto">
         {monthWheel.map((month) => (
-          <div
-            key={`${label}-${month}`}
-            className={`rounded-[18px] px-2 py-2.5 text-center text-[15px] font-semibold ${
-              month === "March 2026" ? "bg-[#2C2C2E] text-white" : "text-[#8E8E93]/30"
+          <button
+            key={`${label}-${month.key}`}
+            type="button"
+            onClick={() => onSelectMonth(month.key, true)}
+            className={`block h-[42px] w-full snap-center rounded-[18px] px-2 text-center text-[15px] font-semibold transition ${
+              month.key === selectedMonthKey ? "bg-[#2C2C2E] text-white" : "text-[#8E8E93]/30"
             }`}
           >
-            {month}
-          </div>
+            {month.label}
+          </button>
         ))}
       </div>
     </div>
@@ -43,14 +86,23 @@ function MonthWheel({ label }) {
 }
 
 export function StatementScreen({ goTo, openViewer }) {
+  const [selectedMonthKey, setSelectedMonthKey] = useState("2026-08");
   const [isGenerating, setIsGenerating] = useState(false);
   const fileInputRef = useRef(null);
+  const autoOpenedMonthRef = useRef("");
 
-  const handleGenerate = () => {
-    const statementPath = STATEMENT_FILES[selectedMonthKey];
+  const openStatementForMonth = (monthKey, allowFileFallback) => {
+    if (isGenerating) {
+      return;
+    }
+
+    const statementPath = STATEMENT_FILES[monthKey];
 
     if (!statementPath) {
-      fileInputRef.current?.click();
+      if (allowFileFallback) {
+        fileInputRef.current?.click();
+      }
+
       return;
     }
 
@@ -59,6 +111,19 @@ export function StatementScreen({ goTo, openViewer }) {
       setIsGenerating(false);
       openViewer(statementPath);
     }, 1100);
+  };
+
+  const handleGenerate = () => {
+    openStatementForMonth(selectedMonthKey, true);
+  };
+
+  const handleSelectMonth = (monthKey, shouldAutoOpen = false) => {
+    setSelectedMonthKey(monthKey);
+
+    if (shouldAutoOpen && monthKey === MARCH_STATEMENT_KEY && autoOpenedMonthRef.current !== monthKey) {
+      autoOpenedMonthRef.current = monthKey;
+      openStatementForMonth(monthKey, false);
+    }
   };
 
   const handleFileChange = (event) => {
@@ -99,8 +164,8 @@ export function StatementScreen({ goTo, openViewer }) {
         </section>
 
         <section className="mt-5 flex gap-8 rounded-[24px] bg-[#1C1C1E] px-7 py-5">
-          <MonthWheel label="From" />
-          <MonthWheel label="To" />
+          <MonthWheel label="From" selectedMonthKey={selectedMonthKey} onSelectMonth={handleSelectMonth} />
+          <MonthWheel label="To" selectedMonthKey={selectedMonthKey} onSelectMonth={handleSelectMonth} />
         </section>
 
         <input ref={fileInputRef} type="file" accept="application/pdf" className="hidden" onChange={handleFileChange} />
