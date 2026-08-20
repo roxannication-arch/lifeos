@@ -4,11 +4,11 @@ function RevolutMark({ className = "" }) {
   return (
     <svg viewBox="0 0 512 512" className={className} aria-hidden="true">
       <path
-        d="M97 94h232c101 0 171 67 171 158 0 90-69 156-168 156h-64v-72h62c55 0 92-34 92-84s-37-84-92-84H97z"
+        d="M132 108h185c64 0 108 44 108 106s-44 105-107 105h-61v-61h60c29 0 49-18 49-44s-20-44-49-44H132z"
         fill="currentColor"
       />
-      <path d="M97 200h76v260H97z" fill="currentColor" />
-      <path d="M256 365h88l124 95H361z" fill="currentColor" />
+      <path d="M132 190h66v214h-66z" fill="currentColor" />
+      <path d="M240 309h74l99 95h-84z" fill="currentColor" />
     </svg>
   );
 }
