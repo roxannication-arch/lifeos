@@ -1,6 +1,7 @@
 import {
   Banknote,
   BarChart3,
+  Camera,
   CreditCard,
   Landmark,
   Link,
@@ -59,7 +60,7 @@ function Transaction({ color, title, amount }) {
 
 function GlassCard({ children, className = "" }) {
   return (
-    <section className={`rounded-[24px] border border-white/5 bg-[#2C2C2E]/70 shadow-xl shadow-black/20 backdrop-blur-xl ${className}`}>
+    <section className={`rounded-[24px] border border-white/10 bg-white/14 shadow-xl shadow-black/18 backdrop-blur-2xl ${className}`}>
       {children}
     </section>
   );
@@ -71,15 +72,15 @@ function TopControls({ goTo }) {
       <button
         type="button"
         onClick={() => goTo("profile")}
-        className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/25 bg-[#6F8A71] text-sm font-extrabold text-white shadow-lg shadow-black/20"
+        className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/25 bg-[#6F8A71]/95 text-white shadow-lg shadow-black/20"
         aria-label="Open profile"
       >
-        RB
+        <Camera size={18} strokeWidth={2.8} />
         <span className="absolute right-0 top-0 h-2 w-2 rounded-full bg-[#FF453A]" />
       </button>
       <button
         type="button"
-        className="flex h-12 flex-1 items-center justify-start gap-3 rounded-full border border-white/15 bg-[#1C1C1E]/60 px-4 text-[15px] font-semibold text-white/85 shadow-inner shadow-white/5"
+        className="flex h-12 flex-1 items-center justify-start gap-3 rounded-full border border-white/20 bg-white/12 px-4 text-[15px] font-semibold text-white/90 shadow-inner shadow-white/10"
       >
         <Search size={21} strokeWidth={2.4} />
         Search
@@ -87,14 +88,14 @@ function TopControls({ goTo }) {
       <button
         type="button"
         onClick={() => goTo("analytics")}
-        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#1C1C1E]/65 text-xl"
+        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/18 bg-white/10 text-xl shadow-inner shadow-white/5"
         aria-label="Open analytics"
       >
         <BarChart3 size={22} strokeWidth={2.6} />
       </button>
       <button
         type="button"
-        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#1C1C1E]/65 text-xl"
+        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/18 bg-white/10 text-xl shadow-inner shadow-white/5"
         aria-label="Cards"
       >
         <CreditCard size={22} strokeWidth={2.5} />
@@ -106,7 +107,7 @@ function TopControls({ goTo }) {
 function QuickAction({ icon: Icon, label }) {
   return (
     <button type="button" className="flex flex-col items-center gap-2 text-[13px] font-bold text-white">
-      <span className="flex h-[54px] w-[54px] items-center justify-center rounded-full bg-white/14 text-2xl shadow-lg shadow-black/20 backdrop-blur-xl">
+      <span className="flex h-[54px] w-[54px] items-center justify-center rounded-full bg-white/18 text-2xl shadow-lg shadow-black/16 backdrop-blur-xl">
         <Icon size={24} strokeWidth={2.7} />
       </span>
       {label}
@@ -117,10 +118,10 @@ function QuickAction({ icon: Icon, label }) {
 export function HomeScreen({ goTo }) {
   return (
     <div
-      className="relative h-full bg-[#101417]"
+      className="relative h-full bg-[#7F949F]"
       style={{
         backgroundImage:
-          "radial-gradient(circle at 18% 8%, rgba(210,230,230,0.36), transparent 28%), radial-gradient(circle at 90% 26%, rgba(103,122,112,0.24), transparent 22%), linear-gradient(150deg, #11171A 0%, #273038 42%, #101316 100%)",
+          "radial-gradient(ellipse at 8% 6%, rgba(255,255,255,0.92), rgba(233,244,249,0.62) 18%, transparent 38%), radial-gradient(ellipse at 86% 30%, rgba(191,211,220,0.44), transparent 38%), linear-gradient(118deg, rgba(241,249,252,0.88) 0%, rgba(210,227,235,0.72) 23%, rgba(70,84,92,0.68) 24%, rgba(37,47,54,0.4) 35%, transparent 48%), linear-gradient(165deg, #A6BAC4 0%, #879CA7 38%, #5D707A 72%, #36434A 100%)",
       }}
     >
       <div className="safe-scroll h-full overflow-y-auto px-4 pb-28">
