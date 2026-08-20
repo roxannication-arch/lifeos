@@ -106,8 +106,7 @@ export function StatementScreen({ goTo, openViewer }) {
 
     setIsGenerating(true);
     window.setTimeout(() => {
-      setIsGenerating(false);
-      openViewer(statementPath);
+      window.location.assign(statementPath);
     }, 1100);
   };
 
