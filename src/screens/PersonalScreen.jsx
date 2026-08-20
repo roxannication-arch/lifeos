@@ -3,7 +3,7 @@ import { BackHeader } from "../components/BackHeader.jsx";
 function Section({ title, children }) {
   return (
     <section className="mt-7">
-      <h2 className="mb-3 px-1 text-sm font-extrabold uppercase tracking-[0.12em] text-[#8E8E93]">{title}</h2>
+      <h2 className="mb-3 text-[20px] font-bold tracking-[-0.03em] text-white">{title}</h2>
       <div className="overflow-hidden rounded-[24px] bg-[#1C1C1E]">{children}</div>
     </section>
   );
@@ -14,10 +14,12 @@ function Row({ label, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className="flex w-full items-center justify-between px-4 py-5 text-left text-[15px] font-bold transition active:bg-[#2C2C2E]"
+      className="flex w-full items-center justify-between px-5 py-[17px] text-left text-[17px] font-bold transition active:bg-[#2C2C2E]"
     >
-      <span>{label}</span>
-      <span className="text-xl text-[#8E8E93]">›</span>
+      <span className="flex items-center gap-4">
+        <span className="text-[21px]">◰</span>
+        {label}
+      </span>
     </button>
   );
 }

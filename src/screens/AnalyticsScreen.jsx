@@ -1,12 +1,12 @@
 import { BackHeader } from "../components/BackHeader.jsx";
 import { AreaChart, CashFlowChart, IncomeSparkline } from "../components/Charts.jsx";
 
-function MetricCard({ children, onClick, title, value, delta, className = "" }) {
+function MetricCard({ children, onClick, title, value, delta, deltaClass = "text-[#FF453A]", className = "" }) {
   const content = (
     <>
       <p className="text-sm font-semibold text-[#8E8E93]">{title}</p>
       <h3 className="mt-1 text-[26px] font-extrabold leading-none tracking-[-0.04em]">{value}</h3>
-      <p className="mt-2 text-sm font-bold text-[#22E0A0]">{delta}</p>
+      <p className={`mt-2 text-sm font-bold ${deltaClass}`}>{delta}</p>
       <div className="mt-4">{children}</div>
     </>
   );
@@ -16,14 +16,14 @@ function MetricCard({ children, onClick, title, value, delta, className = "" }) 
       <button
         type="button"
         onClick={onClick}
-        className={`min-h-[190px] rounded-[24px] bg-[#1C1C1E] p-4 text-left transition active:scale-[0.98] ${className}`}
+        className={`min-h-[190px] rounded-[24px] bg-[#1C1C1E] p-4 text-left shadow-xl shadow-black/30 transition active:scale-[0.98] ${className}`}
       >
         {content}
       </button>
     );
   }
 
-  return <article className={`min-h-[190px] rounded-[24px] bg-[#1C1C1E] p-4 ${className}`}>{content}</article>;
+  return <article className={`min-h-[190px] rounded-[24px] bg-[#1C1C1E] p-4 shadow-xl shadow-black/30 ${className}`}>{content}</article>;
 }
 
 export function AnalyticsScreen({ goTo }) {
@@ -36,7 +36,7 @@ export function AnalyticsScreen({ goTo }) {
           Personal ▾
         </button>
 
-        <section className="mt-6 rounded-[24px] bg-[#1C1C1E] p-5">
+        <section className="mt-6 rounded-[24px] bg-[#1C1C1E] p-5 shadow-xl shadow-black/30">
           <div className="flex items-start justify-between">
             <div>
               <p className="text-sm font-semibold text-[#8E8E93]">Spent</p>
@@ -50,7 +50,7 @@ export function AnalyticsScreen({ goTo }) {
         </section>
 
         <section className="mt-4 grid grid-cols-2 gap-4">
-          <MetricCard title="Income" value="$3,036" delta="▼$401" onClick={() => goTo("income")}>
+          <MetricCard title="Income" value="$3,036" delta="▼ $401" onClick={() => goTo("income")}>
             <IncomeSparkline />
           </MetricCard>
           <MetricCard title="Net cash flow" value="-$237" delta="⊖ Negative">

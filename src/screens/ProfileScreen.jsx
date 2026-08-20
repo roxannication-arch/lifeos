@@ -1,18 +1,12 @@
 const menuGroups = [
-  [
-    { label: "Invite friends", sub: "Earn $150 or more", icon: "★" },
-    { label: "Inbox", badge: "20", icon: "✉" },
-  ],
-  [
-    { label: "Personal info", icon: "👤" },
-    { label: "Account details", icon: "▣" },
-    { label: "Security", icon: "🔒" },
-    { label: "Documents and statements", icon: "▤", screen: "documents" },
-  ],
-  [
-    { label: "Help", badge: "1", icon: "?" },
-    { label: "Settings", icon: "⚙" },
-  ],
+  { label: "Invite friends", sub: "Earn $150 or more", icon: "✉" },
+  { label: "Inbox", badge: "20", icon: "▰" },
+  { label: "Personal info", icon: "♟" },
+  { label: "Account details", icon: "⌂" },
+  { label: "Security", icon: "▣" },
+  { label: "Documents and statements", icon: "◰", screen: "documents" },
+  { label: "Help", badge: "1", icon: "?" },
+  { label: "Settings", icon: "⚙" },
 ];
 
 function MenuRow({ item, goTo }) {
@@ -20,22 +14,21 @@ function MenuRow({ item, goTo }) {
     <button
       type="button"
       onClick={() => item.screen && goTo(item.screen)}
-      className="flex w-full items-center justify-between px-4 py-4 text-left transition active:bg-[#2C2C2E]"
+      className="flex w-full items-center justify-between px-4 py-[15px] text-left transition active:bg-white/5"
     >
       <div className="flex items-center gap-3">
-        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#2C2C2E] text-lg">{item.icon}</span>
+        <span className="flex h-10 w-10 items-center justify-center text-[22px] text-white">{item.icon}</span>
         <div>
-          <p className="text-[15px] font-bold text-white">{item.label}</p>
-          {item.sub ? <p className="mt-1 text-xs font-semibold text-[#8E8E93]">{item.sub}</p> : null}
+          <p className="text-[17px] font-bold text-white">{item.label}</p>
+          {item.sub ? <p className="mt-0.5 text-[14px] font-medium text-white/55">{item.sub}</p> : null}
         </div>
       </div>
       <div className="flex items-center gap-2">
         {item.badge ? (
-          <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-[#FF453A] px-2 text-xs font-extrabold text-white">
+          <span className="flex h-7 min-w-7 items-center justify-center rounded-full bg-white px-2 text-xs font-extrabold text-black">
             {item.badge}
           </span>
         ) : null}
-        <span className="text-xl font-bold text-[#8E8E93]">›</span>
       </div>
     </button>
   );
@@ -43,43 +36,51 @@ function MenuRow({ item, goTo }) {
 
 export function ProfileScreen({ goTo }) {
   return (
-    <div className="safe-scroll h-[800px] overflow-y-auto px-4 pb-8">
-      <header className="flex items-center justify-between pt-1">
+    <div
+      className="safe-scroll relative h-[800px] overflow-y-auto px-4 pb-8"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 20% 17%, rgba(34,224,160,0.18), transparent 14%), radial-gradient(circle at 72% 60%, rgba(10,132,255,0.15), transparent 21%), radial-gradient(circle at 72% 42%, rgba(170,120,75,0.18), transparent 18%), linear-gradient(#101313, #111111)",
+      }}
+    >
+      <header className="sticky top-0 z-10 -mx-4 flex items-center justify-between px-4 py-2 backdrop-blur-md">
         <button
           type="button"
           onClick={() => goTo("home")}
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-[#1C1C1E] text-2xl font-semibold"
+          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#1C1C1E]/70 text-2xl font-semibold"
           aria-label="Close profile"
         >
           ✕
         </button>
-        <button type="button" className="rounded-full bg-[#1C1C1E] px-4 py-3 text-sm font-extrabold">
-          ◆ Upgrade
+        <button type="button" className="rounded-full border border-white/10 bg-white/18 px-4 py-3 text-[15px] font-extrabold backdrop-blur-xl">
+          ◈ Upgrade
         </button>
       </header>
 
-      <section className="mt-8 flex flex-col items-center text-center">
-        <div className="flex h-[88px] w-[88px] items-center justify-center rounded-full bg-[#6F7D6A] text-2xl font-extrabold">RB</div>
-        <h1 className="mt-5 text-[30px] font-extrabold leading-tight tracking-[-0.05em]">Roksana Bagdasarian</h1>
-        <p className="mt-1 text-[15px] font-semibold text-[#8E8E93]">@rbagdasarian ▦</p>
+      <section className="mt-7 flex flex-col items-center text-center">
+        <div className="flex h-[112px] w-[112px] items-center justify-center rounded-full border-[5px] border-white/35 bg-[#6F8A71] text-[34px] font-extrabold shadow-2xl shadow-white/10">
+          RB
+        </div>
+        <h1 className="mt-6 text-[31px] font-extrabold leading-tight tracking-[-0.06em]">Roksana Bagdasarian</h1>
+        <p className="mt-2 text-[15px] font-semibold text-white/55">@rbagdasarian ❖</p>
       </section>
 
-      <article className="mt-7 rounded-[24px] bg-gradient-to-br from-[#22E0A0] via-[#2AA875] to-[#1C1C1E] p-5">
-        <p className="text-sm font-extrabold uppercase tracking-[0.16em] text-black/70">Premium</p>
-        <h2 className="mt-5 text-2xl font-extrabold tracking-[-0.04em] text-white">View plan benefits ›</h2>
+      <article className="relative mt-8 h-[88px] overflow-hidden rounded-[24px] bg-gradient-to-br from-[#788F7E] via-[#4A5F52] to-[#1C1C1E] p-4 shadow-xl">
+        <div className="relative z-[1]">
+          <h2 className="text-[21px] font-extrabold leading-tight">Premium</h2>
+          <p className="mt-1 text-[15px] font-semibold text-white/78">View plan benefits ›</p>
+        </div>
+        <div className="absolute -right-7 bottom-1 h-[82px] w-[132px] rotate-[-19deg] rounded-[14px] bg-gradient-to-br from-[#BAC9BC] to-[#54685A] shadow-2xl">
+          <span className="absolute left-5 top-4 rotate-[18deg] text-xs font-extrabold text-white">Revolut</span>
+          <span className="absolute bottom-5 left-7 h-5 w-7 rounded bg-[#D4C49B]" />
+        </div>
       </article>
 
-      <div className="mt-6 space-y-4">
-        {menuGroups.map((group, groupIndex) => (
-          <section key={groupIndex} className="overflow-hidden rounded-[24px] bg-[#1C1C1E]">
-            {group.map((item, index) => (
-              <div key={item.label} className={index > 0 ? "border-t border-[#2C2C2E]" : ""}>
-                <MenuRow item={item} goTo={goTo} />
-              </div>
-            ))}
-          </section>
+      <section className="mt-5 overflow-hidden rounded-[24px] border border-white/5 bg-[#2C2C2E]/78 shadow-xl shadow-black/25 backdrop-blur-xl">
+        {menuGroups.map((item) => (
+          <MenuRow key={item.label} item={item} goTo={goTo} />
         ))}
-      </div>
+      </section>
     </div>
   );
 }
