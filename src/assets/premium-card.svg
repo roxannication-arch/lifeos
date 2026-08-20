@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 160" role="img" aria-labelledby="title">
+  <title id="title">Premium Revolut card illustration</title>
+  <defs>
+    <linearGradient id="card" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#d6ded7"/>
+      <stop offset=".4" stop-color="#8ca191"/>
+      <stop offset="1" stop-color="#445c4d"/>
+    </linearGradient>
+    <linearGradient id="shadow" x1="0" x2="1">
+      <stop offset="0" stop-color="#000" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="260" height="160" fill="none"/>
+  <g transform="translate(46 40) rotate(-18 88 50)">
+    <rect x="0" y="12" width="178" height="100" rx="13" fill="#42594b" opacity=".55"/>
+    <rect x="18" y="0" width="178" height="100" rx="13" fill="url(#card)"/>
+    <rect x="18" y="0" width="178" height="100" rx="13" fill="url(#shadow)" opacity=".18"/>
+    <text x="45" y="31" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Revolut</text>
+    <rect x="45" y="52" width="31" height="24" rx="4" fill="#d8c99e"/>
+    <path d="M45 64h31M60 52v24" stroke="#b49e6f" stroke-width="1.6"/>
+  </g>
+</svg>

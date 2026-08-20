@@ -1,5 +1,8 @@
 import { AreaChart } from "../components/Charts.jsx";
 import { BottomNav } from "../components/BottomNav.jsx";
+import georgiaImage from "../assets/georgia-card.svg";
+import inviteCardImage from "../assets/invite-card.svg";
+import mapPreviewImage from "../assets/map-preview.svg";
 
 const cardItems = [
   { name: "Yellow", number: "··4045", className: "from-[#F7D44A] to-[#F4A736] text-black" },
@@ -136,17 +139,21 @@ export function HomeScreen({ goTo }) {
             <h2 className="text-[17px] font-extrabold leading-tight">Invite friends, get paid</h2>
             <p className="mt-1 text-[13px] font-medium leading-5 text-white/70">Earn $150 for each friend you refer by August 25. T&Cs apply</p>
           </div>
-          <div className="absolute bottom-0 right-0 h-[92px] w-[130px] rotate-[-10deg] rounded-[18px] bg-gradient-to-br from-white via-[#2C2C2E] to-[#7C7CFF] shadow-2xl">
-            <span className="absolute left-5 top-4 text-xs font-extrabold">Revolut</span>
-          </div>
+          <img
+            src={inviteCardImage}
+            alt=""
+            className="absolute -bottom-3 right-0 h-[118px] w-[170px] object-contain drop-shadow-2xl"
+            aria-hidden="true"
+          />
         </GlassCard>
 
         <GlassCard className="mt-5 overflow-hidden">
-          <div className="relative h-[260px] bg-gradient-to-br from-[#9DC9EA] via-[#546C74] to-[#36241E] p-5">
+          <div className="relative h-[260px] overflow-hidden p-5">
+            <img src={georgiaImage} alt="" className="absolute inset-0 h-full w-full object-cover" aria-hidden="true" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/48" />
             <button type="button" className="absolute right-4 top-3 z-[1] text-xl text-white" aria-label="Close Georgia card">
               ×
             </button>
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.35),transparent_7%),linear-gradient(135deg,transparent_0_42%,rgba(255,255,255,0.35)_43%,transparent_45%),linear-gradient(12deg,transparent_0_55%,rgba(0,0,0,0.25)_56%,transparent_58%)] opacity-70" />
             <div className="relative">
               <p className="text-sm font-medium text-white/85">Welcome to</p>
               <h2 className="text-[28px] font-extrabold leading-none">Georgia</h2>
@@ -249,20 +256,7 @@ export function HomeScreen({ goTo }) {
 
         <GlassCard className="mt-5 overflow-hidden">
           <h2 className="px-4 pt-4 text-[15px] font-bold text-white/50">ATMs nearby ›</h2>
-          <div className="m-4 h-[132px] overflow-hidden rounded-[20px] bg-[#23465A]">
-            <div className="relative h-full bg-[linear-gradient(35deg,rgba(34,224,160,0.28)_0_16%,transparent_16_30%,rgba(10,132,255,0.3)_30_48%,transparent_48_62%,rgba(34,224,160,0.22)_62_100%)]">
-              {[18, 34, 52, 64, 76].map((left, index) => (
-                <span
-                  key={left}
-                  className="absolute flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#1C1C1E] bg-black text-[10px]"
-                  style={{ left: `${left}%`, top: `${28 + (index % 3) * 18}%` }}
-                >
-                  ▣
-                </span>
-              ))}
-              <span className="absolute bottom-3 left-3 text-sm font-extrabold"> Maps</span>
-            </div>
-          </div>
+          <img src={mapPreviewImage} alt="Map with nearby ATMs" className="m-4 h-[132px] w-[calc(100%-32px)] rounded-[20px] object-cover" />
         </GlassCard>
 
         <GlassCard className="mt-5 overflow-hidden">

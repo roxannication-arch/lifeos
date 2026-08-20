@@ -1,3 +1,5 @@
+import premiumCardImage from "../assets/premium-card.svg";
+
 const menuGroups = [
   { label: "Invite friends", sub: "Earn $150 or more", icon: "✉" },
   { label: "Inbox", badge: "20", icon: "▰" },
@@ -70,10 +72,12 @@ export function ProfileScreen({ goTo }) {
           <h2 className="text-[21px] font-extrabold leading-tight">Premium</h2>
           <p className="mt-1 text-[15px] font-semibold text-white/78">View plan benefits ›</p>
         </div>
-        <div className="absolute -right-7 bottom-1 h-[82px] w-[132px] rotate-[-19deg] rounded-[14px] bg-gradient-to-br from-[#BAC9BC] to-[#54685A] shadow-2xl">
-          <span className="absolute left-5 top-4 rotate-[18deg] text-xs font-extrabold text-white">Revolut</span>
-          <span className="absolute bottom-5 left-7 h-5 w-7 rounded bg-[#D4C49B]" />
-        </div>
+        <img
+          src={premiumCardImage}
+          alt=""
+          className="absolute -right-8 -top-7 h-[142px] w-[208px] object-contain drop-shadow-2xl"
+          aria-hidden="true"
+        />
       </article>
 
       <section className="mt-5 overflow-hidden rounded-[24px] border border-white/5 bg-[#2C2C2E]/78 shadow-xl shadow-black/25 backdrop-blur-xl">
