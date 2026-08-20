@@ -1,7 +1,20 @@
 import { ArrowLeftRight, BarChart3, Grid2X2 } from "lucide-react";
 
+function RevolutMark({ className = "" }) {
+  return (
+    <svg viewBox="0 0 1024 1024" className={className} aria-hidden="true">
+      <path
+        d="M246 238h380c151 0 255 98 255 239 0 137-99 234-246 234h-98V588h96c72 0 122-45 122-111 0-67-50-112-122-112H246z"
+        fill="currentColor"
+      />
+      <path d="M246 428h128v370H246z" fill="currentColor" />
+      <path d="M502 604h145l181 194H674z" fill="currentColor" />
+    </svg>
+  );
+}
+
 const tabs = [
-  { id: "home", label: "Home", icon: <span className="text-[20px] font-extrabold">R</span> },
+  { id: "home", label: "Home", icon: <RevolutMark className="h-6 w-6" /> },
   { id: "invest", label: "Invest", icon: <BarChart3 size={20} strokeWidth={2.6} /> },
   { id: "payments", label: "Payments", icon: <ArrowLeftRight size={20} strokeWidth={2.6} />, hasDot: true },
   { id: "lifestyle", label: "Lifestyle", icon: <Grid2X2 size={19} strokeWidth={2.7} /> },
