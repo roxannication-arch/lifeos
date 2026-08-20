@@ -130,7 +130,7 @@ export function HomeScreen({ goTo }) {
           <div>
             <p className="text-[15px] font-semibold text-white/75">Personal · USD</p>
             <h1 className="mt-2 text-[46px] font-extrabold leading-none tracking-[-0.07em]">
-              $690<span className="text-[24px]">.42</span>
+              $679<span className="text-[24px]">.12</span>
             </h1>
             <button type="button" className="mt-5 rounded-full bg-white/18 px-5 py-3 text-sm font-extrabold text-white backdrop-blur-xl">
               Accounts
