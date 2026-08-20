@@ -8,3 +8,11 @@ createRoot(document.getElementById("root")).render(
     <App />
   </StrictMode>,
 );
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(() => {
+      // Installation still works as a web page if the browser blocks service workers.
+    });
+  });
+}
